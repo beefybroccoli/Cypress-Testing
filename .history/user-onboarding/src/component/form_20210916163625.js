@@ -78,7 +78,7 @@ export default function Form(props) {
 
     const API_URL = "https://reqres.in/api/users";
     axios.post(API_URL, stateFormData).then((response) => {
-      console.log("form.js - response = ", response);
+      console.log("form.jsresponse = ", response);
       props.set_stateUser(response.data);
     });
 

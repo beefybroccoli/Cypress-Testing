@@ -22,6 +22,7 @@ describe("testing app", () => {
   });
 
   it("modify input name", () => {
+    
     cy.get('[name = "name"]').type("tom hank");
     cy.get('[name="validation_name"]').should("have.value", "");
     cy.get('[name="name"]').should("have.value", "tom hank");
@@ -37,11 +38,11 @@ describe("testing app", () => {
     cy.get('[name="role"]').select("Sales");
     cy.get('[name="validation_role"]').should("have.value", "");
     cy.get('[name="role"]').should("have.value", "sales");
+
     cy.get('[name="submit"]').click();
 
-    cy.intercept("POST", API_EndPoint_URL).as("postRequest");
     cy.wait("@postRequest").then((object) => {
-      console.log("mytest.js - object.response = ", object.response);
+      console.log(object.response);
       expect(object.response.statusCode).equal(201);
       expect(object.response.body.email).equal("tom@hank.com");
       expect(object.response.body.password).equal("password1");

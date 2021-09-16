@@ -41,7 +41,7 @@ describe("testing app", () => {
 
     cy.intercept("POST", API_EndPoint_URL).as("postRequest");
     cy.wait("@postRequest").then((object) => {
-      console.log("mytest.js - object.response = ", object.response);
+      console.log("mytest.js - object.response);
       expect(object.response.statusCode).equal(201);
       expect(object.response.body.email).equal("tom@hank.com");
       expect(object.response.body.password).equal("password1");
