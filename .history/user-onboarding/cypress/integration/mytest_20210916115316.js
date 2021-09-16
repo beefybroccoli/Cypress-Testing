@@ -30,13 +30,13 @@ describe("testing app", () => {
     cy.get('[name="email"]').should("have.value", "samchan@yahoo.com");
     cy.get('[name="password"]').type("password1");
     cy.get('[name="validation_password"]').should("have.value", "");
-    cy.get('[name="password"]').should("have.value", "password1");
+    cy.get('[name="password"]').should("have.value", "");
     cy.get('[name="termsOfService"]').check();
     cy.get('[name="validation_termsOfService"]').should("have.value", "");
-    cy.get('[name="termsOfService"]').should("have.value", "true");
+
     cy.get('[name="role"]').select("Sales");
     cy.get('[name="validation_role"]').should("have.value", "");
-    cy.get('[name="role"]').should("have.value", "sales");
+
     cy.get('[name="submit"]').click();
   });
 

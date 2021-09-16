@@ -36,7 +36,7 @@ describe("testing app", () => {
     cy.get('[name="termsOfService"]').should("have.value", "true");
     cy.get('[name="role"]').select("Sales");
     cy.get('[name="validation_role"]').should("have.value", "");
-    cy.get('[name="role"]').should("have.value", "sales");
+
     cy.get('[name="submit"]').click();
   });
 
