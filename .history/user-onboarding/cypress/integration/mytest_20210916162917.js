@@ -57,7 +57,6 @@ describe("testing app", () => {
 });
 
 /*
-reference code
 https://egghead.io/blog/intercepting-network-requests-in-cypress
 it('creating a board', () => {
   cy.intercept('POST', '/api/boards').as('createBoard')

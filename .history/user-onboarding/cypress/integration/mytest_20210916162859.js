@@ -53,11 +53,27 @@ describe("testing app", () => {
       expect(object.response.body.id).to.not.equal("");
       expect(object.response.body.createdAt).to.not.equal("");
     });
+    // .should((response) => {
+
+    // expect(response).to.not.equal(null);
+    // expect(response.data).to.not.equal(null);
+    // expect(response.status).to.not.equal("");
+    // expect(response.status).equal(201);
+    // });
+    // .then((response) => {
+    //     expect(response.status).to.eq(201);
+    //     expect(response.data.email).to.eq("tom@hank.com");
+    //     expect(response.data.password).to.equal("password1");
+    //     expect(response.data.name).to.equal("tom");
+    //     expect(response.data.termsOfService).to.equal("true");
+    //     expect(response.data.role).to.equal("sales");
+    //     expect(response.data.id).to.not.equal("");
+    //     expect(response.data.createdAt).to.not.equal("");
+    //   });
   });
 });
 
 /*
-reference code
 https://egghead.io/blog/intercepting-network-requests-in-cypress
 it('creating a board', () => {
   cy.intercept('POST', '/api/boards').as('createBoard')

@@ -25,9 +25,9 @@ describe("testing app", () => {
     cy.get('[name = "name"]').type("tom hank");
     cy.get('[name="validation_name"]').should("have.value", "");
     cy.get('[name="name"]').should("have.value", "tom hank");
-    cy.get('[name="email"]').type("tom@hank.com");
+    cy.get('[name="email"]').type("samchan@yahoo.com");
     cy.get('[name="validation_email"]').should("have.value", "");
-    cy.get('[name="email"]').should("have.value", "tom@hank.com");
+    cy.get('[name="email"]').should("have.value", "samchan@yahoo.com");
     cy.get('[name="password"]').type("password1");
     cy.get('[name="validation_password"]').should("have.value", "");
     cy.get('[name="password"]').should("have.value", "password1");
@@ -43,21 +43,29 @@ describe("testing app", () => {
     cy.get('[name="submit"]').click();
 
     cy.wait("@postRequest").then((object) => {
-      console.log(object.response);
-      expect(object.response.statusCode).equal(201);
-      expect(object.response.body.email).equal("tom@hank.com");
-      expect(object.response.body.password).equal("password1");
-      expect(object.response.body.name).to.equal("tom hank");
-      expect(object.response.body.termsOfService).to.equal(true);
-      expect(object.response.body.role).to.equal("sales");
-      expect(object.response.body.id).to.not.equal("");
-      expect(object.response.body.createdAt).to.not.equal("");
+      console.log(response);
     });
+    // .should((response) => {
+
+    // expect(response).to.not.equal(null);
+    // expect(response.data).to.not.equal(null);
+    // expect(response.status).to.not.equal("");
+    // expect(response.status).equal(201);
+    // });
+    // .then((response) => {
+    //     expect(response.status).to.eq(201);
+    //     expect(response.data.email).to.eq("tom@hank.com");
+    //     expect(response.data.password).to.equal("password1");
+    //     expect(response.data.name).to.equal("tom");
+    //     expect(response.data.termsOfService).to.equal("true");
+    //     expect(response.data.role).to.equal("sales");
+    //     expect(response.data.id).to.not.equal("");
+    //     expect(response.data.createdAt).to.not.equal("");
+    //   });
   });
 });
 
 /*
-reference code
 https://egghead.io/blog/intercepting-network-requests-in-cypress
 it('creating a board', () => {
   cy.intercept('POST', '/api/boards').as('createBoard')
