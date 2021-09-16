@@ -16,15 +16,10 @@ describe("testing app", () => {
 
   it("modify input name", () => {
     cy.get('[name = "name"]').type("first name");
-    cy.get('[name="validation_name"]').should("have.value", "");
     cy.get('[name="email"]').type("samchan@yahoo.com");
-    cy.get('[name="validation_email"]').should("have.value", "");
     cy.get('[name="password"]').type("password1");
-    cy.get('[name="validation_password"]').should("have.value", "");
     cy.get('[name="termsOfService"]').check();
-    cy.get('[name="validation_termsOfService"]').should("have.value", "");
     cy.get('[name="role"]').select("Sales");
-    cy.get('[name="validation_role"]').should("have.value", "");
     cy.get('[name="submit"]').click();
   });
 
@@ -52,18 +47,11 @@ describe("testing app", () => {
   });
 
   it("check for presence of elements", () => {
-    cy.get('[name = "name"]').type("first name").clear();
-    cy.get('[name="validation_name"]').its("length").should("be.gte", 0);
-    cy.get('[name="email"]').type("samchan@yahoo.com").clear();
-    cy.get('[name="validation_email"]').its("length").should("be.gte", 0);
-    cy.get('[name="password"]').type("password1").clear();
-    cy.get('[name="validation_password"]').its("length").should("be.gte", 0);
-    cy.get('[name="termsOfService"]').check().uncheck();
-    cy.get('[name="validation_termsOfService"]')
-      .its("length")
-      .should("be.gte", 0);
-    cy.get('[name="role"]').select("Sales").select("");
-    cy.get('[name="validation_role"]').its("length").should("be.gte", 0);
+    cy.get('[name = "name"]').type("first name");
+    cy.get('[name="email"]').type("samchan@yahoo.com");
+    cy.get('[name="password"]').type("password1");
+    cy.get('[name="termsOfService"]').check();
+    cy.get('[name="role"]').select("Sales");
     cy.contains("Submit");
   });
 });

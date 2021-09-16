@@ -141,9 +141,7 @@ export default function Form(props) {
             value={stateFormData.termsOfService}
           />
         </label>
-        <Validation_P name="validation_termsOfService">
-          {stateInputValidation.termsOfService}
-        </Validation_P>
+        <Validation_P>{stateInputValidation.termsOfService}</Validation_P>
         <br />
         {/* ----------------------------------- */}
         <label>
@@ -160,9 +158,7 @@ export default function Form(props) {
             <option value="developer">Developer</option>
           </Select_Input>
         </label>
-        <Validation_P name="validation_role">
-          {stateInputValidation.role}
-        </Validation_P>
+        <Validation_P>{stateInputValidation.role}</Validation_P>
         {/* ----------------------------------- */}
         {/* the submit button remain disabled until "stateFormValidation = true" */}
         <button name="submit" disabled={!stateFormValidation}>

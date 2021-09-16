@@ -57,13 +57,8 @@ describe("testing app", () => {
     cy.get('[name="email"]').type("samchan@yahoo.com").clear();
     cy.get('[name="validation_email"]').its("length").should("be.gte", 0);
     cy.get('[name="password"]').type("password1").clear();
-    cy.get('[name="validation_password"]').its("length").should("be.gte", 0);
     cy.get('[name="termsOfService"]').check().uncheck();
-    cy.get('[name="validation_termsOfService"]')
-      .its("length")
-      .should("be.gte", 0);
     cy.get('[name="role"]').select("Sales").select("");
-    cy.get('[name="validation_role"]').its("length").should("be.gte", 0);
     cy.contains("Submit");
   });
 });
