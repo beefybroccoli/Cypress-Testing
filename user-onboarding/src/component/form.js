@@ -45,6 +45,7 @@ export default function Form(props) {
   const [stateFormData, set_stateFormData] = useState(
     initial_state_stateFormData
   );
+
   const [stateFormValidation, set_stateFormValidation] = useState(false);
 
   const [stateInputValidation, set_stateInputValidation] = useState(
@@ -66,6 +67,10 @@ export default function Form(props) {
       stateInputValidation,
       set_stateInputValidation
     );
+
+    // schema_validate_input(
+    //   name,
+    //   toUseValue);
   };
 
   const cb_onSubmit = (event) => {
@@ -73,8 +78,11 @@ export default function Form(props) {
 
     const API_URL = "https://reqres.in/api/users";
     axios.post(API_URL, stateFormData).then((response) => {
+      console.log("response = ", response);
       props.set_stateUser(response.data);
     });
+
+    set_stateFormData(initial_state_stateFormData);
   };
 
   useEffect(() => {

@@ -37,28 +37,37 @@ describe("testing app", () => {
     cy.get('[name="role"]').select("Sales");
     cy.get('[name="validation_role"]').should("have.value", "");
     cy.get('[name="role"]').should("have.value", "sales");
-    cy.get('[name="submit"]').click();
-  });
 
-  it("test request() with query parameters", () => {
-    cy.request("POST", API_URL, {
-      name: "tom",
-      email: "tom@hank.com",
-      password: "password1",
-      termsOfService: "true",
-      role: "sales",
-    }).then((response) => {
-      expect(response).property("status").to.equal(201);
-      expect(response.body).property("name").to.equal("tom");
-      expect(response.body).property("email").to.equal("tom@hank.com");
-      expect(response.body).property("password").to.equal("password1");
-      expect(response.body).property("termsOfService").to.equal("true");
-      expect(response.body).property("role").to.equal("sales");
-      expect(response.body).property("id").to.not.equal("");
-      expect(response.body).property("createdAt").to.not.equal("");
-    });
+    cy.intercept("POST", API_URL).as("postRequest");
+
+    cy.get('[name="submit"]').click();
+
+    //   cy.wait("@postRequest").then((response) => {
+    //     expect(response.status).to.eq(201);
+    //     expect(response.data.email).to.eq("tom@hank.com");
+    //     expect(response.data.password).to.equal("password1");
+    //     expect(response.data.name).to.equal("tom");
+    //     expect(response.data.termsOfService).to.equal("true");
+    //     expect(response.data.role).to.equal("sales");
+    //     expect(response.data.id).to.not.equal("");
+    //     expect(response.data.createdAt).to.not.equal("");
+    //   });
   });
 });
+
+/*
+https://egghead.io/blog/intercepting-network-requests-in-cypress
+it('creating a board', () => {
+  cy.intercept('POST', '/api/boards').as('createBoard')
+  cy.visit('/')
+  cy.get('[data-cy="create-board"]').click()
+  cy.get('[data-cy=new-board-input]').type('new board{enter}')
+  cy.wait('@createBoard').then(({response}) => {
+    expect(response.statusCode).to.eq(201)
+    expect(response.body.name).to.eq('new board')
+  })
+})
+*/
 
 describe("testing app", () => {
   beforeEach(() => {
