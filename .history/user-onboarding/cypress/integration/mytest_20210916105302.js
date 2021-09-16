@@ -24,20 +24,19 @@ describe("testing app", () => {
   });
 
   it("test request() with query parameters", () => {
-    cy.request("POST", API_URL, {
-      name: "tom",
-      email: "tom@hank.com",
-      password: "password1",
-      termsOfService: "true",
-      role: "sales",
-    }).then((response) => {
-      expect(response).property("status").to.equal(201);
-      expect(response.body).property("name").to.equal("tom");
-      expect(response.body).property("email").to.equal("tom@hank.com");
-      expect(response.body).property("password").to.equal("password1");
-      expect(response.body).property("termsOfService").to.equal("true");
-      expect(response.body).property("role").to.equal("sales");
-    });
+    cy.request("POST"
+      API_URL,
+      qs: {
+        name: "tom",
+        email: "tom@hank.com",
+        password: "password1",
+        termsOfService: "true",
+        role: "sales",
+      })
+      .then((response) => {
+        expect(response).property("status").to.equal(200);
+      })
+    );
   });
 
   /*

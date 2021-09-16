@@ -33,10 +33,7 @@ describe("testing app", () => {
     }).then((response) => {
       expect(response).property("status").to.equal(201);
       expect(response.body).property("name").to.equal("tom");
-      expect(response.body).property("email").to.equal("tom@hank.com");
-      expect(response.body).property("password").to.equal("password1");
-      expect(response.body).property("termsOfService").to.equal("true");
-      expect(response.body).property("role").to.equal("sales");
+      expect(response.email).property("email").to.equal("tom@hank.com");
     });
   });
 

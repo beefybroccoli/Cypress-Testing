@@ -1,5 +1,3 @@
-const API_URL = "https://reqres.in/api/users";
-
 describe("testing app", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000");
@@ -24,26 +22,12 @@ describe("testing app", () => {
   });
 
   it("test request() with query parameters", () => {
-    cy.request("POST", API_URL, {
-      name: "tom",
-      email: "tom@hank.com",
-      password: "password1",
-      termsOfService: "true",
-      role: "sales",
-    }).then((response) => {
-      expect(response).property("status").to.equal(201);
-      expect(response.body).property("name").to.equal("tom");
-      expect(response.body).property("email").to.equal("tom@hank.com");
-      expect(response.body).property("password").to.equal("password1");
-      expect(response.body).property("termsOfService").to.equal("true");
-      expect(response.body).property("role").to.equal("sales");
+    cy.request({
+      url: "",
+      qs: {},
     });
+    .its()
   });
-
-  /*
-  axios.post(API_URL, stateFormData).then((response) => {
-      props.set_stateUser(response.data);
-  */
 
   it("sample test", () => {
     expect(1 + 2).to.equal(3);

@@ -5,6 +5,7 @@ import axios from "axios";
 import {
   schema_validate_input,
   schema_validate_form,
+  schema_validate_input_2,
 } from "./schema_validation";
 
 const Form_Div = styled.div`
@@ -155,9 +156,7 @@ export default function Form(props) {
         <Validation_P>{stateInputValidation.role}</Validation_P>
         {/* ----------------------------------- */}
         {/* the submit button remain disabled until "stateFormValidation = true" */}
-        <button name="submit" disabled={!stateFormValidation}>
-          Submit
-        </button>
+        <button disabled={!stateFormValidation}>Submit</button>
       </form>
     </Form_Div>
   );
