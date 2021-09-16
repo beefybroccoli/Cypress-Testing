@@ -50,7 +50,6 @@ describe("testing app", () => {
       expect(object.response.body.role).equal("sales");
       expect(object.response.body.id).not.equal("");
       expect(object.response.body.createdAt).not.equal("");
-      expect(object.response.statusMessage).equal("Created");
     });
   });
 });

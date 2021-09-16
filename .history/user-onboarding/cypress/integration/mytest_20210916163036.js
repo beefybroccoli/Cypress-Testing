@@ -37,7 +37,8 @@ describe("testing app", () => {
     cy.get('[name="role"]').select("Sales");
     cy.get('[name="validation_role"]').should("have.value", "");
     cy.get('[name="role"]').should("have.value", "sales");
-    cy.intercept("POST", API_EndPoint_URL).as("postRequest");
+
+
     cy.get('[name="submit"]').click();
 
     cy.wait("@postRequest").then((object) => {
@@ -45,12 +46,11 @@ describe("testing app", () => {
       expect(object.response.statusCode).equal(201);
       expect(object.response.body.email).equal("tom@hank.com");
       expect(object.response.body.password).equal("password1");
-      expect(object.response.body.name).equal("tom hank");
-      expect(object.response.body.termsOfService).equal(true);
-      expect(object.response.body.role).equal("sales");
-      expect(object.response.body.id).not.equal("");
-      expect(object.response.body.createdAt).not.equal("");
-      expect(object.response.statusMessage).equal("Created");
+      expect(object.response.body.name).to.equal("tom hank");
+      expect(object.response.body.termsOfService).to.equal(true);
+      expect(object.response.body.role).to.equal("sales");
+      expect(object.response.body.id).to.not.equal("");
+      expect(object.response.body.createdAt).to.not.equal("");
     });
   });
 });
