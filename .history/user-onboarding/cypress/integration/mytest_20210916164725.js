@@ -88,7 +88,6 @@ describe("testing app", () => {
       .should("be.gte", 0);
     cy.get('[name="role"]').select("Sales").select("");
     cy.get('[name="validation_role"]').its("length").should("be.gte", 0);
-    cy.get('[name="submit"').should("be.disabled");
     cy.contains("Submit");
   });
 });
