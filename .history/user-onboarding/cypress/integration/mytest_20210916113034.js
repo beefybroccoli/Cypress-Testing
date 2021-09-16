@@ -1,12 +1,6 @@
 const API_URL = "https://reqres.in/api/users";
 const HOME_PAGE = "http://localhost:3000";
 
-describe("sanity test", () => {
-  it("sample test", () => {
-    expect(1 + 2).to.equal(3);
-    expect(1 + 2).not.to.equal(4);
-  });
-});
 describe("testing app", () => {
   beforeEach(() => {
     cy.visit(HOME_PAGE);
@@ -49,8 +43,6 @@ describe("testing app", () => {
       expect(response.body).property("password").to.equal("password1");
       expect(response.body).property("termsOfService").to.equal("true");
       expect(response.body).property("role").to.equal("sales");
-      expect(response.body).property("id").to.not.equal("");
-      expect(response.body).property("createdAt").to.not.equal("");
     });
   });
 });
@@ -60,7 +52,7 @@ describe("testing app", () => {
     cy.visit(HOME_PAGE);
   });
 
-  it("check for text validation", () => {
+  it("check for presence of elements", () => {
     cy.get('[name = "name"]').type("first name").clear();
     cy.get('[name="validation_name"]').its("length").should("be.gte", 0);
     cy.get('[name="email"]').type("samchan@yahoo.com").clear();
@@ -76,3 +68,4 @@ describe("testing app", () => {
     cy.contains("Submit");
   });
 });
+

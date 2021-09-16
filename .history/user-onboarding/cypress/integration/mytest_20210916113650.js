@@ -50,7 +50,7 @@ describe("testing app", () => {
       expect(response.body).property("termsOfService").to.equal("true");
       expect(response.body).property("role").to.equal("sales");
       expect(response.body).property("id").to.not.equal("");
-      expect(response.body).property("createdAt").to.not.equal("");
+      expect(response.body).property("id").to.not.equal("");
     });
   });
 });

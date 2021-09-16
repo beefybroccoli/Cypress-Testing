@@ -3,12 +3,13 @@ import Form from "./component/form";
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 
-const App_Div = styled.div`
-  border: 2px solid black;
-  margin: 1%;
-  height: 95vh;
-`;
 function App() {
+  const App_Div = styled.div`
+    border: 2px solid black;
+    margin: 1%;
+    height: 95vh;
+  `;
+
   const [stateArray, set_stateArray] = useState([]);
   const [stateUser, set_stateUser] = useState(null);
 
